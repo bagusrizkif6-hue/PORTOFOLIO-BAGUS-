@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bagus Rizki Fitranto — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F1EA;
+    --panel:#FFFFFF;
+    --ink:#191B1D;
+    --muted:#63625B;
+    --line:#DAD8CC;
+    --bull:#1E7A46;
+    --bull-bg:#E4F1E9;
+    --bear:#B23A2E;
+    --bear-bg:#F7E6E3;
+    --steel:#24435F;
+    --steel-bg:#E4EAF0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+
+  /* TICKER TAPE */
+  .ticker-outer{
+    background:var(--ink);
+    color:var(--paper);
+    overflow:hidden;
+    white-space:nowrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    padding:9px 0;
+  }
+  .ticker-track{
+    display:inline-block;
+    padding-left:100%;
+    animation:scroll-left 32s linear infinite;
+  }
+  .ticker-track span{margin-right:44px;}
+  .up{color:#7FD69A;}
+  .down{color:#F0918A;}
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+
+  /* HERO */
+  header.hero{padding:64px 0 40px;}
+  .symbol{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    color:var(--steel);
+    letter-spacing:2px;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-size:56px;
+    line-height:1.02;
+    letter-spacing:-0.5px;
+  }
+  .role{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:20px;
+    color:var(--muted);
+    margin-top:10px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .contact-row a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);}
+  .contact-row a:hover{color:var(--steel);border-color:var(--steel);}
+
+  /* CANDLESTICK STRIP */
+  .chart-strip{
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+    height:64px;
+    margin-top:34px;
+    padding:0 2px;
+  }
+  .candle{width:9px;border-radius:1px;}
+  .candle.bull{background:var(--bull);}
+  .candle.bear{background:var(--bear);}
+
+  /* SECTIONS */
+  section{padding:38px 0;border-top:1px solid var(--line);}
+  .field-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:1.5px;
+    color:var(--steel);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .field-label::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--bull);
+    display:inline-block;
+  }
+  h2.section-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:26px;
+    margin-bottom:16px;
+  }
+  p.lead{font-size:16px;color:var(--ink);max-width:640px;}
+
+  /* SKILL GRID */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+    margin-top:22px;
+  }
+  .skill-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .skill-card .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--bull);
+    background:var(--bull-bg);
+    padding:2px 8px;
+    border-radius:4px;
+    display:inline-block;
+    margin-bottom:8px;
+  }
+  .skill-card h3{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin-bottom:4px;
+  }
+  .skill-card p{font-size:13.5px;color:var(--muted);}
+
+  /* PLATFORM PILLS */
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .pill{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    background:var(--steel-bg);
+    color:var(--steel);
+    padding:7px 14px;
+    border-radius:20px;
+  }
+
+  /* TIMELINE */
+  .row-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:14px 0;
+    border-bottom:1px dashed var(--line);
+    gap:20px;
+  }
+  .row-item:last-child{border-bottom:none;}
+  .row-item .l{font-weight:600;font-size:15.5px;}
+  .row-item .r{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .row-item .desc{font-size:14px;color:var(--muted);margin-top:4px;max-width:560px;}
+
+  footer{
+    padding:40px 0 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    text-align:center;
+  }
+
+  @media(max-width:600px){
+    h1{font-size:38px;}
+    .contact-row{gap:10px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-outer">
+  <div class="ticker-track">
+    <span class="up">▲ FOREX ANALYSIS</span>
+    <span class="up">▲ SAHAM — AJAIB</span>
+    <span class="down">▼ RISK MANAGEMENT</span>
+    <span class="up">▲ CRYPTO — PHANTOM WALLET</span>
+    <span class="up">▲ EXNESS TRADING</span>
+    <span class="down">▼ DASAR CODING</span>
+    <span class="up">▲ MARKET RESEARCH 2-3 THN</span>
+    <span class="up">▲ FOREX ANALYSIS</span>
+    <span class="up">▲ SAHAM — AJAIB</span>
+    <span class="down">▼ RISK MANAGEMENT</span>
+    <span class="up">▲ CRYPTO — PHANTOM WALLET</span>
+    <span class="up">▲ EXNESS TRADING</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="symbol">BRF · CALON MAHASISWA</div>
+    <h1>Bagus Rizki<br>Fitranto</h1>
+    <div class="role">Lulusan SMA — Trader &amp; Market Enthusiast</div>
+    <div class="contact-row">
+      <a href="tel:081930875661">081930875661</a>
+      <a href="mailto:bagusrizkif6@gmail.com">bagusrizkif6@gmail.com</a>
+      <span>Bekasi, Jawa Barat</span>
+    </div>
+    <div class="chart-strip" aria-hidden="true">
+      <div class="candle bull" style="height:22px;"></div>
+      <div class="candle bear" style="height:14px;"></div>
+      <div class="candle bull" style="height:34px;"></div>
+      <div class="candle bull" style="height:28px;"></div>
+      <div class="candle bear" style="height:18px;"></div>
+      <div class="candle bull" style="height:46px;"></div>
+      <div class="candle bull" style="height:38px;"></div>
+      <div class="candle bear" style="height:24px;"></div>
+      <div class="candle bull" style="height:52px;"></div>
+      <div class="candle bull" style="height:58px;"></div>
+      <div class="candle bear" style="height:30px;"></div>
+      <div class="candle bull" style="height:44px;"></div>
+      <div class="candle bull" style="height:60px;"></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="field-label">ringkasan.diri</div>
+    <h2 class="section-title">Tentang saya</h2>
+    <p class="lead">Lulusan SMA dengan minat kuat di pasar keuangan — sudah 2-3 tahun belajar dan praktik mandiri di forex, saham, dan cryptocurrency. Terbiasa memantau pergerakan pasar, membaca chart, dan mengambil keputusan berdasarkan data. Saat ini sedang bersiap melanjutkan kuliah, sambil terus mengasah kemampuan analitis dan teknis.</p>
+  </section>
+
+  <section>
+    <div class="field-label">keahlian.utama</div>
+    <h2 class="section-title">Keahlian</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <span class="tag">MARKET</span>
+        <h3>Analisis Multi-Aset</h3>
+        <p>Forex, saham, dan crypto — pengalaman mandiri 2-3 tahun membaca pergerakan pasar.</p>
+      </div>
+      <div class="skill-card">
+        <span class="tag">TEKNIKAL</span>
+        <h3>Analisis Chart Dasar</h3>
+        <p>Pemantauan tren dan pola market secara rutin untuk pengambilan keputusan.</p>
+      </div>
+      <div class="skill-card">
+        <span class="tag">DISIPLIN</span>
+        <h3>Manajemen Risiko</h3>
+        <p>Terbiasa disiplin dalam mengatur risiko saat mengambil posisi trading.</p>
+      </div>
+      <div class="skill-card">
+        <span class="tag">TEKNIS</span>
+        <h3>Dasar Pemrograman</h3>
+        <p>Familiar dengan logika coding dasar, dengan bantuan tools/AI.</p>
+      </div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Ajaib — Saham</span>
+      <span class="pill">Exness — Forex</span>
+      <span class="pill">Phantom Wallet — Crypto/Solana</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="field-label">proyek.pribadi</div>
+    <h2 class="section-title">Proyek</h2>
+    <div class="row-item">
+      <div>
+        <div class="l">Eksplorasi Trading Multi-Aset (Mandiri)</div>
+        <div class="desc">Riset dan praktik trading di tiga pasar — forex, saham, crypto — menggunakan Ajaib, Exness, dan Phantom Wallet untuk memahami karakteristik masing-masing.</div>
+      </div>
+      <div class="r">2 — SEKARANG</div>
+    </div>
+    <div class="row-item">
+      <div>
+        <div class="l">Dasar Sistem Trading Otomatis</div>
+        <div class="desc">Mempelajari konsep dasar pengembangan bot trading sebagai penerapan skill analitis dan teknis.</div>
+      </div>
+      <div class="r">MANDIRI</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="field-label">pendidikan</div>
+    <h2 class="section-title">Pendidikan</h2>
+    <div class="row-item">
+      <div>
+        <div class="l">Sekolah Menengah Atas (SMA)</div>
+        <div class="desc">Status: Lulus — rencana melanjutkan ke jenjang perguruan tinggi.</div>
+      </div>
+      <div class="r">LULUS</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="field-label">tujuan</div>
+    <h2 class="section-title">Sedang mencari</h2>
+    <p class="lead">Kesempatan magang, kerja paruh waktu, atau pengalaman kerja awal di bidang keuangan/teknologi, sambil terus mengembangkan diri menjelang jenjang kuliah.</p>
+  </section>
+
+  <footer>
+    BAGUS RIZKI FITRANTO — PORTOFOLIO — DIPERBARUI 2026
+  </footer>
+</div>
+
+</body>
+</html>
